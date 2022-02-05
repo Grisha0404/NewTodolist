@@ -1,6 +1,8 @@
 import React from 'react';
 
-const AddTaskFrom = () => {
+type AddTaskType = {}
+
+const AddTaskFrom = (props: AddTaskType) => {
     return (
         <div>
             <input/>
