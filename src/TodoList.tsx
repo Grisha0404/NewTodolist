@@ -1,11 +1,11 @@
 import React from 'react';
 import TodoListHeader from "./TodoListHeader";
-import TaskList from "./TaskList/TaskList";
+import TaskList from "./TaskList";
 
 
 type TodoListPopsType={
     title: string,
-    tasks: Array<TaskType>
+    task: Array<TaskType>
 }
 
 export type TaskType ={
@@ -18,7 +18,7 @@ const TodoList = (props: TodoListPopsType) => {
     return (
         <div>
         <TodoListHeader title={props.title}/>
-        <TaskList task={props.tasks}/>
+        <TaskList tasks={props.task}/>
         </div>
     );
 };
