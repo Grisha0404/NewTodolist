@@ -1,27 +1,17 @@
 import React from 'react';
-import {TaskType, TodoListPopsType} from "./TodoList";
+import {TaskType} from "./TodoList";
 
-type TaskPropsType = {
-    task: Array<TaskType>
+type TaskPropsType = TaskType & {
     removeTask: (id: number) => void
 }
+
 
 const Task = (props: TaskPropsType) => {
     return (
         <div>
             {
-                props.task.map(t =>
-                    <li>
-                        <input onClick={() => {
-                            alert("click")
-                        }} type="checkbox" checked={t.isDone}/>
-                        <span>{t.title}</span>
-                        <button onClick={() => {
-                            props.removeTask(t.id)
-                        }}>x
-                        </button>
-                    </li>)
-
+                <li> <input  type={"checkbox"} checked={props.isDone}/> <span>{props.title}</span>
+                    <button onClick={() => {props.removeTask(props.id)}}>x</button></li>
             }
         </div>
     );
