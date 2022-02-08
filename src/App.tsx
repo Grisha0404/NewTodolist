@@ -23,8 +23,13 @@ function App() {
                 return task
         }
     }
+
     let changeFilter = (filter: FilterType) => {
         setFilter(filter)
+    }
+
+    let addNewTask = (title: string) => {
+        console.log(title);
     }
 
     let removeTask = (id: number) => {
@@ -35,11 +40,7 @@ function App() {
     return (
         <div className="App">
             <TodoList title={'What to learn'} task={taskForTodoList()} removeTask={removeTask}
-                      changeFilter={changeFilter}/>
-            {/*<TodoList title={'What to read'} task={taskForTodoList2} removeTask={removeTask2}
-                      changeFilter={changeFilter2}/>
-            <TodoList title={'What to write'} task={taskForTodoList3} removeTask={removeTask3}
-                      changeFilter={changeFilter3}/>*/}
+                      changeFilter={changeFilter} addNewTask={addNewTask}/>
         </div>
     );
 }
