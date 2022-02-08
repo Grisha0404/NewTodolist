@@ -1,5 +1,6 @@
 import React from 'react';
 import AddTaskFrom from "./AddTaskFrom";
+import {TaskType} from "./TodoList";
 
 type TodoListHeaderType = {
     title: string
