@@ -10,8 +10,12 @@ const Task = (props: TaskPropsType) => {
     return (
         <div>
             {
-                <li> <input  type={"checkbox"} checked={props.isDone}/> <span>{props.title}</span>
-                    <button onClick={() => {props.removeTask(props.id)}}>x</button></li>
+                <li><input type={"checkbox"} checked={props.isDone}/> <span>{props.title}</span>
+                    <button onClick={() => {
+                        props.removeTask(props.id)
+                    }}>x
+                    </button>
+                </li>
             }
         </div>
     );
