@@ -15,7 +15,7 @@ const TaskList = (props: TaskListType) => {
     return (
         <div>
             <ul>
-                {props.tasks.map(task => <Task key={task.id} {...task} removeTask={props.removeTask} />)}
+                {props.tasks.map(task => <Task key={task.id} {...task} removeTask={props.removeTask}/>)}
             </ul>
             <ControlButtons changeFilter={props.changeFilter}/>
         </div>
