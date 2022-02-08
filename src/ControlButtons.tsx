@@ -1,24 +1,18 @@
 import React from 'react';
-import {FilterValuesType} from "./App";
+import {FilterType} from "./App";
 
 type ButtonsType = {
-    changeFilter: (value: FilterValuesType) => void
+    changeFilter: (filter: FilterType) => void
 }
 
 const ControlButtons = (props: ButtonsType) => {
     return (
         <div>
-            <button onClick={() => {
-                props.changeFilter('all')
-            }}>All
+            <button onClick={() => props.changeFilter('all')}>All
             </button>
-            <button onClick={() => {
-                props.changeFilter('active')
-            }}>Active
+            <button onClick={() => props.changeFilter('active')}>Active
             </button>
-            <button onClick={() => {
-                props.changeFilter('completed')
-            }}>Completed
+            <button onClick={() => props.changeFilter('completed')}>Completed
             </button>
         </div>
     );
