@@ -5,7 +5,6 @@ import TodoList, {TaskType} from "./TodoList";
 export type FilterValuesType =
     'all' | 'active' | 'completed';
 
-
 function App() {
     let [task_1, setTask1] = useState<Array<TaskType>>([
         {id: 1, title: 'HTML', isDone: true},
@@ -21,9 +20,9 @@ function App() {
     }
 
     const taskForTodoList1 = () => {
-        switch (filter1){
+        switch (filter1) {
             case 'completed':
-                return  task_1.filter(t => t.isDone);
+                return task_1.filter(t => t.isDone);
             case 'active':
                 return task_1.filter(t => !t.isDone);
             default:
@@ -37,7 +36,7 @@ function App() {
     return (
         <div className="App">
             <TodoList title={'What to learn'} task={taskForTodoList1()} removeTask={removeTask1}
-                      changeFilter={changeFilter1} />
+                      changeFilter={changeFilter1}/>
             {/*<TodoList title={'What to read'} task={taskForTodoList2} removeTask={removeTask2}
                       changeFilter={changeFilter2}/>
             <TodoList title={'What to write'} task={taskForTodoList3} removeTask={removeTask3}
