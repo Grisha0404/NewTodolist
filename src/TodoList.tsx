@@ -21,7 +21,7 @@ const TodoList = (props: TodoListPopsType) => {
     return (
         <div>
             <TodoListHeader title={props.title}/>
-            <TaskList tasks={props.task} removeTask={props.removeTask} changeFilter={props.changeFilter} />
+            <TaskList tasks={props.task} removeTask={props.removeTask} changeFilter={props.changeFilter}/>
         </div>
     );
 };
