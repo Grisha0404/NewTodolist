@@ -1,7 +1,9 @@
 import React, {ChangeEvent, useState} from 'react';
+import {TaskType} from "./TodoList";
 
 
-type AddTaskType = {
+
+type AddTaskType =  {
     addNewTask: (title: string) => void
 }
 
