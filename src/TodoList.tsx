@@ -9,7 +9,7 @@ export type TodoListPopsType = {
     task: Array<TaskType>
     removeTask: (id: number) => void
     changeFilter: (filter: FilterType) => void
-    addNewTask: (title: string) => void
+    addNewTask: ( title: string) => void
 }
 
 export type TaskType = {
