@@ -28,7 +28,7 @@ function App() {
         setFilter(filter)
     }
 
-    let addNewTask = (title: string) => {
+    let addNewTask = ( title: string) => {
         console.log(title);
     }
 
