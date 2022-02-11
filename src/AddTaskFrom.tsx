@@ -2,12 +2,12 @@ import React, {ChangeEvent, useState} from 'react';
 import {TaskType} from "./TodoList";
 
 
-
-type AddTaskType =  {
+type AddTaskType = {
     addNewTask: (title: string) => void
 }
 
 const AddTaskFrom = (props: AddTaskType) => {
+
     let [title, setTitle] = useState('')
 
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -21,8 +21,8 @@ const AddTaskFrom = (props: AddTaskType) => {
 
     return (
         <div>
-            <input value={title} onChange={onChangeInputHandler} />
-            <button  onClick={onClickButtonHandler}>x</button>
+            <input value={title} onChange={onChangeInputHandler}/>
+            <button onClick={onClickButtonHandler}>x</button>
         </div>
     );
 };
