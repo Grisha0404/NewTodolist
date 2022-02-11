@@ -29,7 +29,7 @@ function App() {
     }
 
     let addNewTask = ( title: string) => {
-        console.log(title);
+        setTask([...task, {id:5, title, isDone: false}])
     }
 
     let removeTask = (id: number) => {
