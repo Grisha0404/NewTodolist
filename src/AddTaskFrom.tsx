@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
-import {TaskType} from "./TodoList";
+import style from "./todoList.module.css";
 
 
 type AddTaskType = {
@@ -13,7 +13,6 @@ const AddTaskFrom = (props: AddTaskType) => {
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.currentTarget.value)
     }
-
     const onClickButtonHandler = () => {
         props.addNewTask(title)
         setTitle('')
@@ -22,7 +21,7 @@ const AddTaskFrom = (props: AddTaskType) => {
     return (
         <div>
             <input value={title} onChange={onChangeInputHandler}/>
-            <button onClick={onClickButtonHandler}>x</button>
+            <button className={style.buttonAdd} onClick={onClickButtonHandler}>Add</button>
         </div>
     );
 };
