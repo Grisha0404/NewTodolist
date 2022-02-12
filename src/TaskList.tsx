@@ -13,16 +13,15 @@ type TaskListType = {
 
 
 const TaskList = (props: TaskListType) => {
-    return (
-        <div>
-            <ul>
-                {
-                    props.tasks.map( t => <Tasks key={t.id} {...t} removeTask={props.removeTask}/>)
-                 }
-            </ul>
-            <ControlButtons changeFilter={props.changeFilter}/>
-        </div>
-    );
+    const tasksHandler = props.tasks.map(t => <Tasks key={t.id} {...t} removeTask={props.removeTask}/>)
+return (
+    <div>
+        <ul>
+            {tasksHandler}
+        </ul>
+        <ControlButtons changeFilter={props.changeFilter}/>
+    </div>
+);
 };
 
 export default TaskList;
