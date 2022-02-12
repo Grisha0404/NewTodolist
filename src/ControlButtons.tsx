@@ -1,18 +1,22 @@
 import React from 'react';
 import {FilterType} from "./App";
+import style from "./todoList.module.css"
 
 type ButtonsType = {
     changeFilter: (filter: FilterType) => void
 }
 
 const ControlButtons = (props: ButtonsType) => {
+    const allHandler = () => props.changeFilter('all');
+    const activeHandler = () => props.changeFilter('active');
+    const completedHandler = () => props.changeFilter('completed');
     return (
         <div>
-            <button onClick={() => props.changeFilter('all')}>All
+            <button className={style.button} onClick={allHandler}>All
             </button>
-            <button onClick={() => props.changeFilter('active')}>Active
+            <button className={style.button} onClick={activeHandler}>Active
             </button>
-            <button onClick={() => props.changeFilter('completed')}>Completed
+            <button className={style.button} onClick={completedHandler}>Completed
             </button>
         </div>
     );
