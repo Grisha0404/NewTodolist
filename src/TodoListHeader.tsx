@@ -11,7 +11,7 @@ type TodoListHeaderType = {
 const TodoListHeader = (props: TodoListHeaderType) => {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h2>{props.title}</h2>
             <AddTaskFrom addNewTask={props.addNewTask} />
         </div>
     );
