@@ -28,8 +28,8 @@ function App() {
         setFilter(filter)
     }
 
-    let addNewTask = ( title: string) => {
-        setTask([...task, {id:5, title, isDone: false}])
+    let addNewTask = (title: string) => {
+        setTask([...task, {id: 5, title, isDone: false}])
     }
 
     let removeTask = (id: number) => {
