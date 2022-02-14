@@ -10,6 +10,7 @@ const ControlButtons = (props: ButtonsType) => {
     const allHandler = () => props.changeFilter('all');
     const activeHandler = () => props.changeFilter('active');
     const completedHandler = () => props.changeFilter('completed');
+
     return (
         <div>
             <button className={style.button} onClick={allHandler}>All
