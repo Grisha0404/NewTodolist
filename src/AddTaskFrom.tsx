@@ -1,15 +1,18 @@
 import React from 'react';
 
-type AddTaskType = {
-
+type AddTaskFromType = {
+    addTask: (title: string) => void
 }
 
-const AddTaskFrom = (props: AddTaskType) => {
+const AddTaskFrom = (props: AddTaskFromType) => {
 
+    const onClickButtonHandler = () => {
+        props.addTask("title")
+    }
     return (
         <div>
-            <input  />
-            <button>Add</button>
+            <input/>
+            <button onClick={onClickButtonHandler}>Add</button>
         </div>
     );
 };
