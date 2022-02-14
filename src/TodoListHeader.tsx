@@ -3,14 +3,15 @@ import AddTaskFrom from "./AddTaskFrom";
 
 type TodoListHeaderType = {
     title: string
+    addTask: (title: string) => void
 }
 
 const TodoListHeader = (props: TodoListHeaderType) => {
     return (
-        <div>
+        <>
             <h2>{props.title}</h2>
-            <AddTaskFrom/>
-        </div>
+            <AddTaskFrom addTask={props.addTask}/>
+        </>
     );
 };
 
