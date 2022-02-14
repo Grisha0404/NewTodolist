@@ -3,7 +3,7 @@ import {TaskType} from "./TodoList";
 import style from "./todoList.module.css";
 
 type TaskPropsType = TaskType & {
-    removeTask: (id: number) => void
+    removeTask: (id: string) => void
 }
 
 const Tasks = (props: TaskPropsType) => {
