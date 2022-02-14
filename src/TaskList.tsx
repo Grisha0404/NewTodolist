@@ -7,7 +7,7 @@ import {FilterType} from "./App";
 
 type TaskListType = {
     tasks: Array<TaskType>
-    removeTask: (id: number) => void
+    removeTask: (id: string) => void
     changeFilter: (filter: FilterType) => void
 }
 
