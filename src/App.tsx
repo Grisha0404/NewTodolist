@@ -28,9 +28,6 @@ function App() {
         setFilter(filter)
     }
 
-    let addNewTask = (title: string) => {
-        setTask([...task, {id: 5, title, isDone: false}])
-    }
 
     let removeTask = (id: number) => {
         let filterTask = task.filter(t => t.id !== id);
@@ -40,7 +37,7 @@ function App() {
     return (
         <div className="App">
             <TodoList title={'What to learn'} task={taskForTodoList()} removeTask={removeTask}
-                      changeFilter={changeFilter} addNewTask={addNewTask}/>
+                      changeFilter={changeFilter}/>
         </div>
     );
 }
