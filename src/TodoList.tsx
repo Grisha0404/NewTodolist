@@ -7,12 +7,13 @@ import {FilterType} from "./App";
 export type TodoListPopsType = {
     title: string,
     task: Array<TaskType>
-    removeTask: (id: number) => void
+    removeTask: (id: string) => void
     changeFilter: (filter: FilterType) => void
+    addTask: (title: string) => void
 }
 
 export type TaskType = {
-    id: number,
+    id: string,
     title: string,
     isDone: boolean
 }
@@ -20,7 +21,7 @@ export type TaskType = {
 const TodoList = (props: TodoListPopsType) => {
     return (
         <div>
-            <TodoListHeader title={props.title}/>
+            <TodoListHeader title={props.title} addTask={props.addTask}/>
             <TaskList tasks={props.task} removeTask={props.removeTask} changeFilter={props.changeFilter}/>
         </div>
     );
