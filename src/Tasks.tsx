@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TaskType} from "./TodoList";
 import style from "./todoList.module.css";
 
@@ -7,6 +7,7 @@ type TaskPropsType = TaskType & {
 }
 
 const Tasks = (props: TaskPropsType) => {
+
     return (
         <div>
             {
