@@ -32,10 +32,10 @@ function App() {
         setTask(filterTask)
     }
     const addTask = (title: string) => {
-       /* const newTask: TaskType = {
-            id: v1(), title: 'new TASK', isDone: false
-        }
-        const updatedTask = [newTask, ...task]*/
+        /* const newTask: TaskType = {
+             id: v1(), title: 'new TASK', isDone: false
+         }
+         const updatedTask = [newTask, ...task]*/
         setTask([{id: v1(), title: title, isDone: false}, ...task])
     }
 
