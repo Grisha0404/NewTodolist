@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {TaskType} from "./TodoList";
-import style from "./todoList.module.css";
+import Button from "./Button";
 
 type TaskPropsType = TaskType & {
     removeTask: (id: string) => void
@@ -12,8 +12,9 @@ const Tasks = (props: TaskPropsType) => {
         <div>
             {
                 <li><input type={"checkbox"} checked={props.isDone}/> <span>{props.title}</span>
-                    <button className={style.buttonDelete} onClick={() => props.removeTask(props.id)}>x
-                    </button>
+                    {/*<button className={style.buttonDelete} onClick={() => props.removeTask(props.id)}>x
+                    </button>*/}
+                    <Button name={'x'} callback={() => props.removeTask(props.id)}/>
                 </li>
             }
         </div>
