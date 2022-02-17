@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
+import Button from "./Button";
 
 type AddTaskFromType = {
     addTask: (title: string) => void
@@ -6,7 +7,7 @@ type AddTaskFromType = {
 
 const AddTaskFrom = (props: AddTaskFromType) => {
     const [title, setTitle] = useState('')
-    const onClickInputHandler =(event: ChangeEvent<HTMLInputElement>)=> {
+    const onClickInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.currentTarget.value)
     }
     const onClickButtonHandler = () => {
@@ -19,7 +20,8 @@ const AddTaskFrom = (props: AddTaskFromType) => {
     return (
         <div>
             <input value={title} onChange={onClickInputHandler} onKeyPress={onKeyPressHandler}/>
-            <button onClick={onClickButtonHandler}>Add</button>
+            {/*<button onClick={onClickButtonHandler}>Add</button>*/}
+            <Button name={'Add'} callback={onClickButtonHandler}/>
         </div>
     );
 };
