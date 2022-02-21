@@ -21,7 +21,7 @@ const AddTaskFrom = (props: AddTaskFromType) => {
         <div>
             <input value={title} onChange={onClickInputHandler} onKeyPress={onKeyPressHandler}/>
             {/*<button onClick={onClickButtonHandler}>Add</button>*/}
-            <Button name={'Add'} callback={onClickButtonHandler}/>
+            <Button classNameBut={''} name={'Add'} callback={onClickButtonHandler}/>
         </div>
     );
 };
