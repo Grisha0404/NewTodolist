@@ -10,6 +10,7 @@ export type TodoListPopsType = {
     removeTask: (id: string) => void
     changeFilter: (filter: FilterType) => void
     addTask: (title: string) => void
+    filter: FilterType
 }
 
 export type TaskType = {
@@ -22,7 +23,7 @@ const TodoList = (props: TodoListPopsType) => {
     return (
         <div>
             <TodoListHeader title={props.title} addTask={props.addTask}/>
-            <TaskList tasks={props.task} removeTask={props.removeTask} changeFilter={props.changeFilter}/>
+            <TaskList tasks={props.task} removeTask={props.removeTask} changeFilter={props.changeFilter} filter={props.filter}/>
         </div>
     );
 };
