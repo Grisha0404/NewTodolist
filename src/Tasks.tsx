@@ -8,13 +8,16 @@ type TaskPropsType = TaskType & {
 
 const Tasks = (props: TaskPropsType) => {
 
+    const taskClass = props.isDone ? 'completed-task' : '';
+    const buttonHandler = () => props.removeTask(props.id);
+
     return (
         <div>
             {
-                <li><input type={"checkbox"} checked={props.isDone}/> <span>{props.title}</span>
-                    {/*<button className={style.buttonDelete} onClick={() => props.removeTask(props.id)}>x
-                    </button>*/}
-                    <Button name={'x'} callback={() => props.removeTask(props.id)}/>
+                <li>
+                    <input type={"checkbox"} checked={props.isDone}/>
+                    <span className={taskClass}>{props.title}</span>
+                    <Button classNameBut={''} name={'x'} callback={buttonHandler}/>
                 </li>
             }
         </div>
