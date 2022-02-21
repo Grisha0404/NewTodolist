@@ -3,15 +3,17 @@ import React from 'react';
 type ButtonType = {
     name: string
     callback: () => void
+    classNameBut: string
 }
 
-const Button:React.FC<ButtonType> =({name, callback }) => {
+const Button: React.FC<ButtonType> = ({name, callback,classNameBut}) => {
     const OnClickHandler = () => {
-       callback()
+        callback()
     }
+
     return (
         <>
-            <button onClick={OnClickHandler}>{name}</button>
+            <button className={classNameBut} onClick={OnClickHandler}>{name}</button>
         </>
     );
 };
