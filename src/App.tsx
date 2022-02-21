@@ -24,6 +24,7 @@ function App() {
                 return task
         }
     }
+    const filteredTaskForRender = taskForTodoList()
     const changeFilter = (filter: FilterType) => {
         setFilter(filter)
     }
@@ -41,8 +42,8 @@ function App() {
 
     return (
         <div className="App">
-            <TodoList title={'What to learn'} task={taskForTodoList()} removeTask={removeTask}
-                      changeFilter={changeFilter} addTask={addTask}/>
+            <TodoList title={'What to learn'} task={filteredTaskForRender} removeTask={removeTask}
+                      changeFilter={changeFilter} addTask={addTask} filter={filter}/>
         </div>
     );
 }
