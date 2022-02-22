@@ -10,11 +10,14 @@ type TaskListType = {
     removeTask: (id: string) => void
     changeFilter: (filter: FilterType) => void
     filter: FilterType
+    changeTaskStatus: (id: string, isDune: boolean) => void
 }
 
 
 const TaskList = (props: TaskListType) => {
-    const tasksHandler = props.tasks.map(t => <Tasks key={t.id} {...t} removeTask={props.removeTask}/>)
+    const tasksHandler = props.tasks.map(t => <Tasks key={t.id} {...t} removeTask={props.removeTask}
+                                                     changeTaskStatus={props.changeTaskStatus}/>)
+
     const taskList = tasksHandler.length
         ? <ul>
             {tasksHandler}
