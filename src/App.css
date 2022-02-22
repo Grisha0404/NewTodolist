@@ -12,6 +12,11 @@
 .activeButton{
  background-color: lightblue;
 }
+
+.error{
+  border-color: red;
+}
+
 .filter-border{
   padding: 5px;
   display: inline-block;
