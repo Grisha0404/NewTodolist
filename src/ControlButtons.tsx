@@ -19,7 +19,7 @@ const ControlButtons = (props: ButtonsType) => {
 
     return (
         <div>
-            {/*<button className={props.filter === 'all' ? 'activeButton': ''} onClick={onClickHandler('all')}>All
+            {/*<button  className={props.filter === 'all' ? 'activeButton': ''} onClick={onClickHandler('all')}>All
             </button>
             <button className={props.filter === 'active' ? 'activeButton': ''} onClick={onClickHandler('active')}>Active
             </button>
