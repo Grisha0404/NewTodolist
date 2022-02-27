@@ -11,8 +11,9 @@ const Tasks = (props: TaskPropsType) => {
 
     const taskClass = props.isDone ? 'completed-task' : '';
     const buttonHandler = () => props.removeTask(props.id);
-    const changeTskStatus = (e: ChangeEvent<HTMLInputElement>)=>
-    {props.changeTaskStatus(props.id,e.currentTarget.checked)}
+    const changeTskStatus = (e: ChangeEvent<HTMLInputElement>) => {
+        props.changeTaskStatus(props.id, e.currentTarget.checked)
+    }
 
     return (
         <div>
@@ -20,7 +21,7 @@ const Tasks = (props: TaskPropsType) => {
                 <li>
                     <input type={"checkbox"}
                            onChange={changeTskStatus}
-                               checked={props.isDone}/>
+                           checked={props.isDone}/>
                     <span className={taskClass}>{props.title}</span>
                     <Button classNameBut={''} name={'x'} callback={buttonHandler}/>
                 </li>
