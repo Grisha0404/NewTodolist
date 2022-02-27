@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TodoListHeader from "./TodoListHeader";
 import TaskList from "./TaskList";
 import {FilterType} from "./App";
@@ -21,12 +21,18 @@ export type TaskType = {
 }
 
 const TodoList = (props: TodoListPopsType) => {
+    let [collapsed, setCollapsed] = useState<boolean>(false)
+    const callBackClick = () => setCollapsed(!collapsed)
+
     return (
         <div>
-            <TodoListHeader title={props.title} addTask={props.addTask}/>
-            <TaskList tasks={props.task} removeTask={props.removeTask}
-                      changeFilter={props.changeFilter} filter={props.filter}
-                      changeTaskStatus={props.changeTaskStatus}/>
+            <h3 onClick={callBackClick} className={'red'}>{props.title}</h3>
+            {!collapsed &&
+                <TodoListHeader addTask={props.addTask}/>}
+            {!collapsed &&
+                <TaskList tasks={props.task} removeTask={props.removeTask}
+                          changeFilter={props.changeFilter} filter={props.filter}
+                          changeTaskStatus={props.changeTaskStatus}/>}
         </div>
     );
 };
