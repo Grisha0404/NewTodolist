@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
+import AddItemForm from "./AddItemForm";
 
 export type todolistsType = {
     id: string
@@ -23,12 +24,10 @@ function App() {
 
     let todolistID1 = v1();
     let todolistID2 = v1();
-
     let [todolists, setTodolists] = useState<Array<todolistsType>>([
         {id: todolistID1, title: 'What to learn', filter: 'all'},
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ])
-
     let [tasks, setTasks] = useState({
         [todolistID1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
@@ -46,11 +45,10 @@ function App() {
         ]
     });
 
-
     function removeTask(todolistID: string, id: string) {
-        /* let filteredTasks = tasks.filter(t => t.id != id);
-         setTasks(filteredTasks);*/
-        setTasks({...tasks, [todolistID]: tasks[todolistID].filter(t => t.id !== id)})
+        setTasks({...tasks, [todolistID]: tasks[todolistID].filter((el) => el.id !== id)})
+        /*let filteredTasks = tasks.filter(t => t.id != id);
+        setTasks(filteredTasks);*/
     }
 
     function addTask(todolistID: string, title: string) {
@@ -62,7 +60,7 @@ function App() {
     }
 
     function changeStatus(todolistID: string, taskId: string, isDone: boolean) {
-        setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === taskId ? {...el, isDone} : el)})
+        setTasks({...tasks, [todolistID]: tasks[todolistID].map((el) => el.id === taskId ? {...el, isDone} : el)})
         /*let task = tasks.find(t => t.id === taskId);
         if (task) {
             task.isDone = isDone;
@@ -71,14 +69,29 @@ function App() {
         setTasks([...tasks]);*/
     }
 
-
     function changeFilter(todolistID: string, value: FilterValuesType) {
-        setTodolists(todolists.map((el) => el.id === todolistID ? {...el, filter: value} : el));
+        setTodolists(todolists.map((el) => el.id === todolistID ? {...el, filter: value} : el))
+        /*setFilter(value);*/
+    }
+
+    const addTodolistHandler = (title: string) => {
+        let newID = v1()
+        let newTodolist: todolistsType = {id: newID, title, filter: 'all'}
+        setTodolists([newTodolist, ...todolists])
+        setTasks({...tasks, [newID]:[]})
+    }
+
+    const updateTask = (todolistID:string, taskID:string, title:string) =>{
+        setTasks({...tasks,[todolistID]: tasks[todolistID].map((el)=> el.id === taskID? {...el, title}:el)})
+    }
+    const updateTitle = (todolistID:string, title:string) =>{
+        setTodolists([...todolists.map((el)=> el.id===todolistID? {...el, title}:el)])
     }
 
 
     return (
         <div className="App">
+            <AddItemForm callBack={addTodolistHandler}/>
             {todolists.map((el) => {
                 let tasksForTodolist = tasks[el.id];
                 if (el.filter === "active") {
@@ -87,18 +100,21 @@ function App() {
                 if (el.filter === "completed") {
                     tasksForTodolist = tasks[el.id].filter(t => t.isDone);
                 }
-
-                return <Todolist
-                    key={el.id}
-                    todolistID={el.id}
-                    title={el.title}
-                    tasks={tasksForTodolist}
-                    removeTask={removeTask}
-                    changeFilter={changeFilter}
-                    addTask={addTask}
-                    changeTaskStatus={changeStatus}
-                    filter={el.filter}
-                />
+                return (
+                    <Todolist
+                        key={el.id}
+                        todolistID={el.id}
+                        title={el.title}
+                        tasks={tasksForTodolist}
+                        removeTask={removeTask}
+                        changeFilter={changeFilter}
+                        addTask={addTask}
+                        changeTaskStatus={changeStatus}
+                        filter={el.filter}
+                        updateTask={updateTask}
+                        updateTitle={updateTitle}
+                    />
+                )
             })
             }
         </div>
