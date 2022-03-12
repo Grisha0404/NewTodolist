@@ -1,7 +1,7 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType} from './App';
-import AddItemForm from "./AddItemForm";
-import {EditableSpan} from "./EditaableSpan";
+import {AddItemForm} from "./AddItemForm";
+import {EditSpan} from "./EditSpan";
 
 type TaskType = {
     id: string
@@ -18,28 +18,25 @@ type PropsType = {
     changeTaskStatus: (todolistID: string, taskId: string, isDone: boolean) => void
     filter: FilterValuesType
     todolistID: string
-    updateTask:(todolistID:string, taskID:string, title:string)=>void
-    updateTitle:(todolistID:string, title:string)=>void
+    upDateTask: (todolistID: string, tID: string, title: string) => void
+    upDateTitle: (todolistID: string, title: string) => void
 }
 
 export function Todolist(props: PropsType) {
-
     const onAllClickHandler = () => props.changeFilter(props.todolistID, "all");
     const onActiveClickHandler = () => props.changeFilter(props.todolistID, "active");
     const onCompletedClickHandler = () => props.changeFilter(props.todolistID, "completed");
-
-    const addTaskHandler = (title:string)=>{
+    const addTaskHandler = (title: string) => {
         props.addTask(props.todolistID, title)
     }
-    const updateTaskHandler =(tID:string, title:string)=>{
-        props.updateTask(props.todolistID,tID, title)
+    const upDateTaskHandler = (tID: string, title: string) => {
+        props.upDateTask(props.todolistID, tID, title)
     }
-    const updateTitleHandler = (title:string) =>{
-        props.updateTitle(props.todolistID,title)
+    const upDateTitleHandler = (title: string) => {
+        props.upDateTitle(props.todolistID, title)
     }
-
     return <div>
-        <EditableSpan title={props.title} callBack={updateTitleHandler}/>
+        <EditSpan title={props.title} callBack={upDateTitleHandler}/>
         <div>
             <AddItemForm callBack={addTaskHandler}/>
         </div>
@@ -55,7 +52,7 @@ export function Todolist(props: PropsType) {
                         <input type="checkbox"
                                onChange={onChangeHandler}
                                checked={t.isDone}/>
-                        <EditableSpan title={t.title} callBack={(title)=>updateTaskHandler(t.id,title)}/>
+                        <EditSpan title={t.title} callBack={(title) => upDateTaskHandler(t.id, title)}/>
                         <button onClick={onClickHandler}>x</button>
                     </li>
                 })
