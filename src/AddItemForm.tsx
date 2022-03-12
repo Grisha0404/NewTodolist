@@ -1,14 +1,13 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
-type AddItemForm = {
-    callBack: (title: string) => void
+type AddItemFormType={
+    callBack:(title:string)=>void
 }
 
-const AddItemForm: React.FC<AddItemForm> = ({ callBack}) => {
+export const AddItemForm:React.FC<AddItemFormType> = ({callBack}) => {
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
-
-    const addTasks = () => {
+    const addTask = () => {
         if (title.trim() !== "") {
             callBack(title.trim());
             setTitle("");
@@ -16,16 +15,17 @@ const AddItemForm: React.FC<AddItemForm> = ({ callBack}) => {
             setError("Title is required");
         }
     }
+
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
+
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null);
         if (e.key === 'Enter') {
-            addTasks();
+            addTask();
         }
     }
-
     return (
         <div>
             <input value={title}
@@ -33,10 +33,8 @@ const AddItemForm: React.FC<AddItemForm> = ({ callBack}) => {
                    onKeyPress={onKeyPressHandler}
                    className={error ? "error" : ""}
             />
-            <button onClick={addTasks}>+</button>
+            <button onClick={addTask}>+</button>
             {error && <div className="error-message">{error}</div>}
         </div>
     );
 };
-
-export default AddItemForm;
