@@ -38,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Grisha0404/NewTodolist.git",
+  "author": "Grisha <96186535+Grisha0404@users.noreply.github.com>",
+  "license": "MIT"
 }
