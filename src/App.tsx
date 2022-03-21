@@ -11,9 +11,16 @@ import {
     taskReducer,
     taskReducerType
 } from "./reducers/taskReducer";
+import {
+    addTodolistsAC,
+    changeFilterAC,
+    changeTodolistTitleAC,
+    removeTodolistsAC,
+    todolistReducer
+} from "./reducers/todolistReducer";
 
 export type FilterValuesType = "all" | "active" | "completed";
-type TodolistType = {
+export type TodolistType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -48,12 +55,12 @@ function App() {
     }
 
     function changeFilter(value: FilterValuesType, todolistId: string) {
-        let todolist = todolists.find(tl => tl.id === todolistId);
+        /*let todolist = todolists.find(tl => tl.id === todolistId);
         if (todolist) {
-            todolist.filter = value;
-            setTodolists([...todolists])
+            todolist.filter = value;*/
+            todolistsDispatch(changeFilterAC(value, todolistId))
         }
-    }
+
 
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
         //достанем нужный массив по todolistId:
@@ -85,7 +92,7 @@ function App() {
 
     function removeTodolist(id: string) {
         // засунем в стейт список тудулистов, id которых не равны тому, который нужно выкинуть
-        setTodolists(todolists.filter(tl => tl.id != id));
+        todolistsDispatch(removeTodolistsAC(id))
         // удалим таски для этого тудулиста из второго стейта, где мы храним отдельно таски
         /*delete tasks[id]; */// удаляем св-во из объекта... значением которого являлся массив тасок
         // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
@@ -95,18 +102,18 @@ function App() {
 
     function changeTodolistTitle(id: string, title: string) {
         // найдём нужный todolist
-        const todolist = todolists.find(tl => tl.id === id);
+        /*const todolist = todolists.find(tl => tl.id === id);
         if (todolist) {
             // если нашёлся - изменим ему заголовок
-            todolist.title = title;
-            setTodolists([...todolists]);
-        }
+            todolist.title = title;*/
+            todolistsDispatch(changeTodolistTitleAC(id, title))
+
     }
 
     let todolistId1 = v1();
     let todolistId2 = v1();
 
-    let [todolists, setTodolists] = useState<Array<TodolistType>>([
+    let [todolists, todolistsDispatch] = useReducer(todolistReducer,[
         {id: todolistId1, title: "What to learn", filter: "all"},
         {id: todolistId2, title: "What to buy", filter: "all"}
     ])
@@ -128,8 +135,9 @@ function App() {
 
     function addTodolist(title: string) {
         let newTodolistId = v1();
-        let newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
-        setTodolists([newTodolist, ...todolists]);
+        /*let newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
+        setTodolists([newTodolist, ...todolists]);*/
+        todolistsDispatch(addTodolistsAC(title, newTodolistId))
         /*setTasks({
             ...tasks,
             [newTodolistId]: []
