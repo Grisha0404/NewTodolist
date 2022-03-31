@@ -4,12 +4,11 @@ import {TaskType, Todolist} from './Todolist';
 import {v1} from 'uuid';
 import {AddItemForm} from './AddItemForm';
 import {
-    addTaskAC, addTodolistAC,
+    addTaskAC,
     changeStatusAC,
     changeTaskTitleAC,
     removeTaskAC, removeTodolistAC,
-    taskReducer,
-    taskReducerType
+    taskReducer
 } from "./reducers/taskReducer";
 import {
     addTodolistsAC,
@@ -50,16 +49,16 @@ function App() {
         tasks[todolistId] = [task, ...todolistTasks];
         // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         setTasks({...tasks});*/
-        let newID = v1()
-        tasksDispatch(addTaskAC(title, todolistId, newID))
+
+        tasksDispatch(addTaskAC(title, todolistId))
     }
 
     function changeFilter(value: FilterValuesType, todolistId: string) {
         /*let todolist = todolists.find(tl => tl.id === todolistId);
         if (todolist) {
             todolist.filter = value;*/
-            todolistsDispatch(changeFilterAC(value, todolistId))
-        }
+        todolistsDispatch(changeFilterAC(value, todolistId))
+    }
 
 
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
@@ -86,7 +85,7 @@ function App() {
             task.title = newTitle;*/
         // засетаем в стейт копию объекта, чтобы React отреагировал перерисовкой
         /*  setTasks({...tasks})*/
-        ;
+
         tasksDispatch(changeTaskTitleAC(id, newValue, todolistId))
     }
 
@@ -106,14 +105,14 @@ function App() {
         if (todolist) {
             // если нашёлся - изменим ему заголовок
             todolist.title = title;*/
-            todolistsDispatch(changeTodolistTitleAC(id, title))
+        todolistsDispatch(changeTodolistTitleAC(id, title))
 
     }
 
     let todolistId1 = v1();
     let todolistId2 = v1();
 
-    let [todolists, todolistsDispatch] = useReducer(todolistReducer,[
+    let [todolists, todolistsDispatch] = useReducer(todolistReducer, [
         {id: todolistId1, title: "What to learn", filter: "all"},
         {id: todolistId2, title: "What to buy", filter: "all"}
     ])
@@ -134,15 +133,15 @@ function App() {
     });
 
     function addTodolist(title: string) {
-        let newTodolistId = v1();
-        /*let newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
-        setTodolists([newTodolist, ...todolists]);*/
-        todolistsDispatch(addTodolistsAC(title, newTodolistId))
+
+        //newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
+        //setTodolists([newTodolist, ...todolists]);
+        todolistsDispatch(addTodolistsAC(title))
         /*setTasks({
             ...tasks,
             [newTodolistId]: []
         })*/
-        tasksDispatch(addTodolistAC(title, newTodolistId))
+
     }
 
     return (
