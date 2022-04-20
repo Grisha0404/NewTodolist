@@ -3,8 +3,6 @@ import {TaskType} from "./Todolist";
 import {Checkbox, IconButton} from "@material-ui/core";
 import {EditableSpan} from "./EditableSpan";
 import {Delete} from "@material-ui/icons";
-import {useDispatch} from "react-redux";
-import {removeTaskAC} from "./state/tasks-reducer";
 
 type TaskPropsType = {
     task: TaskType,
