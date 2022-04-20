@@ -1,7 +1,6 @@
 import React, {useCallback, useReducer, useState} from 'react';
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
-import {v1} from 'uuid';
 import {AddItemForm} from './AddItemForm';
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
@@ -10,7 +9,6 @@ import {
     changeTodolistFilterAC,
     changeTodolistTitleAC,
     removeTodolistAC,
-    todolistsReducer
 } from "./state/todolists-reducer";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/tasks-reducer";
 import {useDispatch, useSelector} from "react-redux";
@@ -42,7 +40,6 @@ function App() {
         // setTasks({...tasks});
         dispatch(removeTaskAC(id, todolistId))
     }, [dispatch])
-
     const addTask = useCallback((title: string, todolistId: string) => {
         // let task = {id: v1(), title: title, isDone: false};
         // //достанем нужный массив по todolistId:
@@ -53,7 +50,6 @@ function App() {
         // setTasks({...tasks});
         dispatch(addTaskAC(title, todolistId))
     }, [dispatch])
-
     const changeStatus = useCallback((id: string, isDone: boolean, todolistId: string) => {
         // //достанем нужный массив по todolistId:
         // let todolistTasks = tasks[todolistId];
@@ -66,7 +62,6 @@ function App() {
         //     setTasks({...tasks});
         dispatch(changeTaskStatusAC(id, isDone, todolistId))
     }, [dispatch])
-
     const changeTaskTitle = useCallback((id: string, newTitle: string, todolistId: string) => {
         // //достанем нужный массив по todolistId:
         // let todolistTasks = tasks[todolistId];
@@ -80,7 +75,6 @@ function App() {
         // }
         dispatch(changeTaskTitleAC(id, newTitle, todolistId))
     }, [dispatch])
-
     const changeFilter = useCallback((value: FilterValuesType, todolistId: string) => {
         // let todolist = todolists.find(tl => tl.id === todolistId);
         // if (todolist) {
@@ -89,7 +83,6 @@ function App() {
         // }
         dispatch(changeTodolistFilterAC(value, todolistId))
     }, [dispatch])
-
     const removeTodolist = useCallback((id: string) => {
         // // засунем в стейт список тудулистов, id которых не равны тому, который нужно выкинуть
         // setTodolists(todolists.filter(tl => tl.id != id));
@@ -99,7 +92,6 @@ function App() {
         // setTasks({...tasks});
         dispatch(removeTodolistAC(id))
     }, [dispatch])
-
     const changeTodolistTitle = useCallback((id: string, title: string) => {
         // // найдём нужный todolist
         // const todolist = todolists.find(tl => tl.id === id);
