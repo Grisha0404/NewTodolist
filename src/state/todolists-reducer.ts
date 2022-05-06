@@ -47,6 +47,7 @@ export const todolistsReducer = (state: Array<TodolistDomainType> = initialState
             return state.filter(tl => tl.id !== action.id)
         }
         case 'ADD-TODOLIST': {
+            debugger
             return [{
                 id: action.todolistId,
                 title: action.title,
@@ -97,9 +98,27 @@ export const setTodosAC = (todos: Array<TodolistType>): SetTodosACType => {
     return {type: 'SET-TODOS', todos}
 }
 
-export const fetchTodosThunk = (dispatch:Dispatch):void =>{
+export const fetchTodosTC = () => (dispatch: Dispatch): void => {
     let pr = todolistsAPI.getTodolists()
-    pr.then((res)=>{
+    pr.then((res) => {
         dispatch(setTodosAC(res.data))
+    })
+}
+export const createTodosTC = (title:string) => (dispatch: Dispatch): void => {
+    let pr = todolistsAPI.createTodolist(title)
+    pr.then((res) => {
+        dispatch(addTodolistAC(title))
+    })
+}
+export const deleteTodosTC = (id:string) => (dispatch: Dispatch): void => {
+    let pr = todolistsAPI.deleteTodolist(id)
+    pr.then((res) => {
+        dispatch(removeTodolistAC(id))
+    })
+}
+export const changeTodoTitleTodosTC = (id:string, title:string) => (dispatch: Dispatch): void => {
+    let pr = todolistsAPI.updateTodolist(id,title)
+    pr.then((res) => {
+        dispatch(changeTodolistTitleAC(id, title))
     })
 }
